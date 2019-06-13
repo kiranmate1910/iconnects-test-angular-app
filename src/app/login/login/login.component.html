@@ -1,0 +1,54 @@
+<div class="login-container">
+    <div class="col-xl-4 col-md-6 col-10 mx-auto">
+        <div class="card">
+            <div class="card-body text-center">
+                <h2 class="card-title">Login</h2>
+
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="floatingLabelForm">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group border-lable-flt">
+                                <input type="text" class="form-control" id="username" placeholder="User Name" formControlName="userName">
+                                <label for="username">User Name</label>
+                            </div>
+                            <div class="alert alert-danger FS10" *ngIf="loginForm.controls.userName.errors?.required && loginForm.controls.userName.dirty">User name is required</div>
+                            <div class="alert alert-danger FS10" *ngIf="loginForm.controls.userName.errors?.pattern">Please enter valid user name</div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group border-lable-flt">
+                                <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="alert alert-danger FS10" *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.dirty">Password is required</div>
+                            <div class="alert alert-danger FS10" *ngIf="loginForm.controls.password.errors?.pattern">Please enter valid password</div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <button  (click)="onSubmit()" [disabled]="(!loginForm.valid)" type="button" class="btn btn-primary signUpBtn">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group f-12px">
+                                New a user? <a href="/signup">Click here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check MT-26" *ngIf="loginError">
+                        <label class="alert alert-danger font-weight-bold">
+                            {{loginError}}
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

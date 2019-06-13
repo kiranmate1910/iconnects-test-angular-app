@@ -1,0 +1,65 @@
+<div class="login-container">
+    <div class="col-xl-4 col-md-6 col-10 mx-auto">
+        <div class="card">
+            <div class="card-body text-center">
+                <h2 class="card-title">Sign Up</h2>
+
+                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="floatingLabelForm">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group border-lable-flt">
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" formControlName="firstName" required>
+                                <label for="name">Your Name</label>
+                            </div>
+                            <div class="alert alert-danger FS10" *ngIf="registrationForm.controls.firstName.errors?.required && registrationForm.controls.firstName.dirty">Your name is required</div>
+                            <div class="alert alert-danger FS10" *ngIf="registrationForm.controls.firstName.errors?.pattern">First name should not contain number or special characters</div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group border-lable-flt">
+                                <input type="text" class="form-control" id="username" placeholder="Username Name" formControlName="userName">
+                                <label for="username">Username Name</label>
+                            </div>
+                            <div class="alert alert-danger FS10" *ngIf="registrationForm.controls.userName.errors?.required && registrationForm.controls.userName.dirty">User name is required</div>
+                            <div class="alert alert-danger FS10" *ngIf="registrationForm.controls.userName.errors?.pattern">Please enter valid user name</div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group border-lable-flt">
+                                <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="alert alert-danger FS10" *ngIf="registrationForm.controls.password.errors?.required && registrationForm.controls.password.dirty">Password is required</div>
+                            <div class="alert alert-danger FS10" *ngIf="registrationForm.controls.password.errors?.pattern">Please enter valid password</div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <button  (click)="onSubmit()" [disabled]="(!registrationForm.valid)" type="button" class="btn btn-primary signUpBtn">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group f-12px">
+                                Already a user? <a href="/login">Click here</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check MT-26" *ngIf="registrationError">
+                        <label class="alert alert-danger font-weight-bold">
+                            {{registrationError}}
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
